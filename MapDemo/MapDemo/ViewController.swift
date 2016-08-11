@@ -94,6 +94,16 @@ class ViewController: UIViewController , CLLocationManagerDelegate , HandleMapSe
     }
     
     
+    @IBAction func addWayPoint(sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.Began {
+            let coordinate = mapView.convertPoint(sender.locationInView(mapView), toCoordinateFromView:mapView)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            mapView.addAnnotation(annotation)
+            
+            
+        }
+    }
     // MARK : CLLocationManager delegate response
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
